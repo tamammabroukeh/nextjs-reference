@@ -18,6 +18,20 @@ module.exports = {
   },
   darkMode: "class",
   plugins: [nextui({
+    // defaultTheme:"light",
+    layout: {
+        disabledOpacity: "0.3",
+        radius: {
+          small: "4px", // rounded-small
+          medium: "8px", // rounded-medium
+          large: "12px", // rounded-large
+        },
+        borderWidth: {
+          small: "1px", // border-small
+          medium: "2px", // border-medium
+          large: "3px", // border-large
+        },
+      },
       themes: {
         light: {
           colors: lightColors
@@ -26,5 +40,6 @@ module.exports = {
           colors: darkColors,
         },
       },
-    }),],
+    }),
+  ],
 }
