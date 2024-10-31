@@ -1,5 +1,4 @@
 import { nextui } from "@nextui-org/theme";
-import { lightColors, darkColors } from "./styles/colors";
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -78,6 +77,9 @@ module.exports = {
                             foreground: "#FFFFFF",
                             DEFAULT: "#f31260",
                         },
+                        content1:{
+
+                        }
                     },
                 },
             },
