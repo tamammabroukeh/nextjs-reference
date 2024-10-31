@@ -1,8 +1,11 @@
-import type {VariantProps} from "tailwind-variants";
+import type { VariantProps } from "tailwind-variants";
 
-import {tv} from "@/utils/tv";
-import {collapseAdjacentVariantBorders, colorVariants, dataFocusVisibleClasses} from "../utils";
-
+import { tv } from "@/utils/tv";
+import {
+  collapseAdjacentVariantBorders,
+  dataFocusVisibleClasses,
+} from "@/utils/classes";
+import { colorVariants } from "@/utils/variants";
 /**
  * Button wrapper **Tailwind Variants** component
  *
@@ -86,7 +89,8 @@ const button = tv({
     },
     disableAnimation: {
       true: "!transition-none data-[pressed=true]:scale-100",
-      false: "transition-transform-colors-opacity motion-reduce:transition-none",
+      false:
+        "transition-transform-colors-opacity motion-reduce:transition-none",
     },
   },
   defaultVariants: {
@@ -267,7 +271,10 @@ const button = tv({
     {
       variant: "light",
       color: "secondary",
-      class: [colorVariants.light.secondary, "data-[hover=true]:bg-secondary/20"],
+      class: [
+        colorVariants.light.secondary,
+        "data-[hover=true]:bg-secondary/20",
+      ],
     },
     {
       variant: "light",
