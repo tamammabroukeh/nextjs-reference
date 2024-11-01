@@ -5,9 +5,8 @@ import { button as buttonStyles } from "@nextui-org/theme";
 import { useTranslations } from "next-intl";
 
 import { siteConfig } from "@/config/site";
-import { title, subtitle } from "@/components/primitives";
+import { title, subtitle } from "@/components/ui/primitives";
 import { GithubIcon } from "@/components/icons";
-import Button from "@/components/ui/Button";
 export default function Home() {
   const t = useTranslations("HomePage");
 
@@ -54,14 +53,6 @@ export default function Home() {
           </span>
         </Snippet>
       </div>
-      <h2 className={title({ size: "md", fullWidth: true, color: "green" })}>
-        Great
-      </h2>
-      <h2 className={title()}>New</h2>
-      <h2 className={title({ size: "md", fullWidth: true, color: "blue" })}>
-        {t("title")}
-      </h2>
-      <Button className="">fsdf</Button>
     </section>
   );
 }
