@@ -1,0 +1,10 @@
+{
+  "HomePage": {
+    "title": "هلو",
+    "about": "اذهب الى صفحة من نحن"
+  },
+  "LocaleSwitcher": {
+    "label": "غيراللغة",
+    "locale": "{locale, select, ar {Arabic} en {English} other {Unknown}}"
+  }
+}
