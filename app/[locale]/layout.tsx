@@ -9,6 +9,10 @@ import { siteConfig } from "@/config/site";
 // import { fontSans } from "@/config/fonts";
 import { Colfax } from "@/config/fonts";
 import { Navbar } from "@/components/navbar";
+import { NextIntlClientProvider } from 'next-intl';
+import { getMessages } from 'next-intl/server';
+import { notFound } from 'next/navigation';
+import { routing } from "@/i18n/routing";
 
 export const metadata: Metadata = {
   title: {
@@ -28,13 +32,20 @@ export const viewport: Viewport = {
   ],
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
+  params: { locale }
 }: {
   children: React.ReactNode;
-}) {
+  params: { locale: string };
+}) {  
+  if (!routing.locales.includes(locale as any)) {
+    notFound();
+  }
+  const messages = await getMessages();
+
   return (
-    <html suppressHydrationWarning lang="en">
+    <html lang={locale} suppressHydrationWarning>
       <head />
       <body
         className={clsx(
@@ -47,7 +58,9 @@ export default function RootLayout({
           <div className="relative flex flex-col h-screen">
             <Navbar />
             <main className="container mx-auto max-w-7xl pt-16 px-6 flex-grow">
-              {children}
+              <NextIntlClientProvider messages={messages}>
+                {children}
+              </NextIntlClientProvider>
             </main>
             <footer className="w-full flex items-center justify-center py-3">
               <Link
