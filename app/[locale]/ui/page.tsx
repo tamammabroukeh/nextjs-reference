@@ -1,5 +1,6 @@
 import { title } from "@/components/ui/primitives";
 import { Button } from "@nextui-org/button";
+import { Dropdown, DropdownItem, DropdownMenu, DropdownTrigger } from "@nextui-org/dropdown";
 
 export default function Page() {
     return (

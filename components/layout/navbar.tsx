@@ -88,9 +88,10 @@ export const Navbar = () => {
           <Link isExternal aria-label="Github" href={siteConfig.links.github}>
             <GithubIcon className="text-default-500" />
           </Link>
-          <LocaleSwitcher />
           <ThemeSwitch />
         </NavbarItem>
+        <LocaleSwitcher />
+
         <NavbarItem className="hidden lg:flex">{searchInput}</NavbarItem>
         <NavbarItem className="hidden md:flex">
           <Button

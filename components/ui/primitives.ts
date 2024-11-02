@@ -26,7 +26,7 @@ export const title = tv({
     },
     defaultVariants: {
         size: "md",
-        color: "blue",
+        color: "primary",
     },
     compoundVariants: [
         {

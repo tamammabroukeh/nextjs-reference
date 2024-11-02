@@ -6,13 +6,14 @@ module.exports = {
         "./components/**/*.{js,ts,jsx,tsx,mdx}",
         "./app/**/*.{js,ts,jsx,tsx,mdx}",
         "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
+        // "./node_modules/@nextui-org/theme/dist/components/(button|code|dropdown|input|kbd|link|listbox|navbar|ripple|snippet|spinner|toggle|menu|divider|popover).js"
     ],
     theme: {
         extend: {
             fontFamily: {
                 sans: ["var(--font-sans)"],
                 mono: ["var(--font-geist-mono)"],
-            },
+            },    
         },
     },
     darkMode: "class",
@@ -54,11 +55,11 @@ module.exports = {
                         primary: {
                             //... 50 to 900
                             foreground: "#FFFFFF",
-                            DEFAULT: "#006FEE",
+                            DEFAULT: "#7B65D3",
                         },
                         secondary: {
                             foreground: "#FFFFFF",
-                            DEFAULT: "#f31260",
+                            DEFAULT: '#128093',
                         },
                         // ... rest of the colors
                     },
@@ -71,7 +72,7 @@ module.exports = {
                         primary: {
                             //... 50 to 900
                             foreground: "#FFFFFF",
-                            DEFAULT: "#006FEE",
+                            DEFAULT:"#4887A1",
                         },
                         secondary: {
                             foreground: "#FFFFFF",
