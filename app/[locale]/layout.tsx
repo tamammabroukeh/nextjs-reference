@@ -11,6 +11,7 @@ import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
+import { getLangDir } from "@/i18n/getLangDir";
 
 export const metadata: Metadata = {
     title: {
@@ -43,7 +44,7 @@ export default async function RootLayout({
     const messages = await getMessages();
 
     return (
-        <html lang={locale} suppressHydrationWarning>
+        <html lang={locale} dir={getLangDir(locale)} suppressHydrationWarning>
             <head />
             <body
                 className={clsx(

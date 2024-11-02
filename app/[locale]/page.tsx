@@ -45,7 +45,9 @@ export default function Home() {
           GitHub
         </Link>
       </div>
-
+        <h1 className={title()}>
+          {t("title")}
+        </h1>
       <div className="mt-8">
         <Snippet hideCopyButton hideSymbol variant="flat">
           <span>
