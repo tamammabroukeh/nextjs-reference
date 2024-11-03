@@ -13,6 +13,9 @@ import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import { getLangDir } from "@/i18n/getLangDir";
 
+export function generateStaticParams() {
+    return routing.locales.map((locale) => ({ locale }));
+}
 export const metadata: Metadata = {
     title: {
         default: siteConfig.name,
@@ -42,9 +45,9 @@ export default async function RootLayout({
         notFound();
     }
     const messages = await getMessages();
-
+    const dir = getLangDir(locale);
     return (
-        <html lang={locale} dir={getLangDir(locale)} suppressHydrationWarning>
+        <html lang={locale} dir={dir} suppressHydrationWarning>
             <head />
             <body
                 className={clsx(

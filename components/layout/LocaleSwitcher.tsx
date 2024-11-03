@@ -1,8 +1,7 @@
+"use client";
 import { useLocale, useTranslations } from "next-intl";
 
-import LocaleSwitcherSelect from "./LocaleSwitcherSelect";
-
-import { routing } from "@/i18n/routing";
+import { Locale, routing, usePathname, useRouter } from "@/i18n/routing";
 import {
     Dropdown,
     DropdownItem,
@@ -11,67 +10,73 @@ import {
 } from "@nextui-org/dropdown";
 import { NavbarItem } from "@nextui-org/navbar";
 import { Button } from "@nextui-org/button";
+import { TranslationIcon } from "../icons";
+import { useTransition } from "react";
+import { SharedSelection } from "@nextui-org/system";
+import { useParams } from "next/navigation";
 
 export default function LocaleSwitcher() {
-    const t = useTranslations("LocaleSwitcher");
     const locale = useLocale();
-
+    const router = useRouter();
+    const params = useParams();
+    const pathname = usePathname();
+    const { locales } = routing;
+    const t = useTranslations("LocaleSwitcher");
+    const [isPending, startTransition] = useTransition();
+    function onSelectChange(keys: SharedSelection) {
+        // const nextLocale = event.target.value as Locale;
+        const nextLocale = keys.currentKey;
+        console.log(nextLocale);
+        startTransition(() => {
+            router.replace(
+                // @ts-expect-error -- TypeScript will validate that only known `params`
+                // are used in combination with a given `pathname`. Since the two will
+                // always match for the current route, we can skip runtime checks.
+                { pathname, params },
+                { locale: nextLocale }
+            );
+        });
+    }
     return (
         <Dropdown>
-            <NavbarItem>
-                <DropdownTrigger>
+            <NavbarItem className="p-0">
+                <DropdownTrigger disabled={isPending} className="p-0">
                     <Button
+                        className="p-0 min-w-min bg-transparent data-[hover=true]:bg-transparent"
                         disableRipple
-                        className="p-0 bg-transparent data-[hover=true]:bg-transparent"
-                        // endContent={icons.chevron}
                         radius="sm"
                         variant="light"
                     >
-                        Features
+                        <TranslationIcon className="fill-default-500" />
                     </Button>
                 </DropdownTrigger>
             </NavbarItem>
             <DropdownMenu
-                aria-label="ACME features"
-                className="w-[340px]"
+                aria-label="Single selection"
+                className="p-1 !min-w-10"
+                selectionMode="single"
+                selectedKeys={[locale]}
+                onSelectionChange={onSelectChange}
+                variant="flat"
+                disallowEmptySelection
                 itemClasses={{
-                    base: "gap-4",
+                    base: "gap-1",
                 }}
             >
+                {/* <DropdownItem key={cur}>
+                        {t("locale", { locale: cur })}
+                    </DropdownItem> */}
                 <DropdownItem
-                    key="autoscaling"
-                    description="ACME scales apps to meet user demand, automagically, based on load."
+                    key={locales[0]}
                     // startContent={icons.scale}
                 >
-                    Autoscaling
+                    {t("locale", { locale: locales[0] })}
                 </DropdownItem>
                 <DropdownItem
-                    key="usage_metrics"
-                    description="Real-time metrics to debug issues. Slow query added? We’ll show you exactly where."
-                    // startContent={icons.activity}
+                    key={locales[1]}
+                    // startContent={icons.scale}
                 >
-                    Usage Metrics
-                </DropdownItem>
-                <DropdownItem
-                    key="production_ready"
-                    description="ACME runs on ACME, join us and others serving requests at web scale."
-                    // startContent={icons.flash}
-                >
-                    Production Ready
-                </DropdownItem>
-                <DropdownItem
-                    key="99_uptime"
-                    description="Applications stay on the grid with high availability and high uptime guarantees."
-                    // startContent={icons.server}
-                >
-                    +99% Uptime
-                </DropdownItem>
-                <DropdownItem
-                    key="supreme_support"
-                    description="Overcome any challenge with a supporting team ready to respond."
-                    // startContent={icons.user}
-                >
-                    +Supreme Support
+                    {t("locale", { locale: locales[1] })}
                 </DropdownItem>
             </DropdownMenu>
         </Dropdown>

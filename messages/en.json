@@ -6,5 +6,28 @@
   "LocaleSwitcher": {
     "label": "Change language",
     "locale": "{locale, select, ar {Arabic} en {English} other {Unknown}}"
+  },
+  "Messages": {
+    "error": {
+      "401Page": "Login is necessary to view this page.",
+      "401Action": "You cannot perform this action until you log in.",
+      "500": "The server cannot be reached at this time. There may be a network connection problem.",
+      "network": "There was an error connecting to the network. Please check your internet connection and try again.",
+      "auth/invalid-credential": "An error occurred during the authentication process. Please verify your login credentials and try again.",
+      "auth/email-already-in-use": "This email {email} is already associated with an existing account. Please use a different email address or log in to your existing account.",
+      "auth/requires-recent-login": "To protect your account, we require you to log in recently before allowing you to reset your password. This step helps us ensure that the person trying to reset the password is the actual account owner."
+    },
+    "success": {
+      "sign-auth": {
+        "title": "You have successfully logged in!",
+        "description": "Kindly wait a moment while you are being redirected"
+      },
+      "operation": "Operation completed successfully.",
+      "add": "Data has been added successfully.",
+      "edit": "Data has been changed successfully.",
+      "delete": "Data has been deleted successfully.",
+      "comment": "Your comment has been added successfully",
+      "updatePassword": "the password has been changed successfully"
+    }
   }
 }
