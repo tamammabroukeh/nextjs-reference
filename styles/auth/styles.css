@@ -1,0 +1,10 @@
+.formInput .nextui-input-wrapper {
+  height: 80px;
+  width: 100%;
+  background-color: white;
+}
+
+.formInput input {
+  font-size: 18px;
+  background-color: white;
+}
